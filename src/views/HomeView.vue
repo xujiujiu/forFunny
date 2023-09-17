@@ -10,7 +10,14 @@
       </div>
     </div>
     <div v-show="state === 'end'" class="gameover">gameOver</div>
-    <div class="models"></div>
+    <div class="models">
+      <button :style="{ color: !model ? 'green' : '#000' }" @click="model = 0">
+        原版模式(空格跳跃)
+      </button>
+      <button :style="{ color: model ? 'green' : '#000' }" @click="model = 1">
+        声音模式（空格开启，声音跳跃）
+      </button>
+    </div>
   </div>
 </template>
 
