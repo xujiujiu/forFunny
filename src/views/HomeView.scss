@@ -1,0 +1,188 @@
+
+body{
+	margin: 0;
+	height: 100vh;
+}
+.models{
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+.container {
+	height: 100vh;
+	display: flex;
+  position: relative;
+	align-items: center;
+	justify-content: center;
+	background: black; 
+	font-size: 30px;
+}
+#stars{
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
+
+}
+.moon {
+  position: absolute;
+  right: 10px;
+  top:10px;
+  width: 50px;
+  height: 50px;
+  background-color: #fefefe; 
+  border-radius: 50%;
+  box-shadow: 0px 0px 20px #fefefe;
+  transition: all 3s ease;
+  // box-shadow: 2px 2px 2px 2px rgba(255, 255, 255, 0.7); /* 阴影效果 */
+}
+// change
+  .change {
+    position: absolute;
+    width: 200px;
+    // bottom: 0;
+    right: 100px;
+    animation: benyue 20s linear infinite;
+    img{
+      width:100%;
+      height: auto;
+      transform: rotateY(180deg)
+    }
+  }
+
+// rabbit
+.rabbit {
+  position: absolute;
+  left: 100px;
+  bottom: 10px;
+	width: 5em;
+	height: 3em;
+	scale: 0.5;
+	color: whitesmoke;
+	background: currentColor;
+	border-radius: 70% 90% 60% 50%;
+	background: radial-gradient(
+    circle at 4.2em 1.4em,
+    #333 0.15em,
+    transparent 0.15em
+  ), /* eye */ currentColor;
+  
+	box-shadow: -0.2em 1em 0 -0.75em #333;
+}
+.rabbit::before {
+	content: '';
+	position: absolute;
+	width: 0.75em;
+	height: 2em;
+	background-color: currentColor;
+	border-radius: 50% 100% 0 0;
+	transform: rotate(-30deg);
+	top: -1em;
+	right: 1em;
+	border: 0.1em solid;
+	border-color: gainsboro transparent transparent gainsboro;
+	box-shadow: -0.5em 0 0 -0.1em;
+}
+.rabbit::after {
+	content: '';
+	position: absolute;
+	width: 1em;
+	height: 1em;
+	background-color: currentColor;
+	border-radius: 50%;
+	left: -0.3em;
+	top: 0.5em;
+	box-shadow: 0.5em 1em 0, 4em 1em 0 -0.2em, 4em 1em 0 -0.2em;
+}
+.jumpRabbit {
+	// animation: hop 2s linear infinite;
+  &:after{
+	  animation: kick 1s infinite linear;
+  }
+}
+.jump {
+	// animation: hopjump 2s linear infinite;
+}
+
+
+@keyframes hop {
+	20% {
+		transform: rotate(-10deg);
+	}
+
+	40% {
+		transform: rotate(10deg);
+	}
+
+	60%,
+	75% {
+		transform: rotate(0deg);
+	}
+}
+
+@keyframes hopjump {
+	20% {
+		transform: rotate(-10deg) translateY(-2em);
+	}
+
+	40% {
+		transform: rotate(10deg) translateY(-8em);
+	}
+
+	60%,
+	75% {
+		transform: rotate(0deg) translateY(0);
+	}
+}
+
+@keyframes kick {
+	40% {
+		box-shadow: 0.4em 2em 0, 4.2em 1.75em 0 -0.2em, 4.4em 1.9em 0 -0.2em;
+	}
+}
+#obstacle-container{
+  position: absolute;
+  background: linear-gradient(transparent, rgb(12, 121, 75) 60%) no-repeat;
+  bottom: 0;
+  left: 0;
+  height: 100px;
+  width: 100%;
+}
+/* 障碍物的样式 */
+.obstacle {
+  position: absolute;
+  // height: 20px;
+  width: 50px;
+  bottom: 0;
+  right: 0;
+  border-radius: 4px 4px 0 0;
+  // background: linear-gradient(#C76503, #753c02) no-repeat;
+  .mooncake{
+    position: relative;
+    width: 50px;
+    height: 35px;
+    background: url('../images/mooncake2.png') no-repeat;
+    background-size: cover;
+    background-position: center;
+      margin-bottom: -15px;
+  }
+  :last-child{
+    margin-bottom: 0;
+  }
+
+}
+
+
+.gameover{
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  display: flex;
+  font-size: 40px;
+  color: #fff;
+  justify-content: center;
+  align-items: center;
+}
