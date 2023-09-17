@@ -96,44 +96,9 @@ body{
 	box-shadow: 0.5em 1em 0, 4em 1em 0 -0.2em, 4em 1em 0 -0.2em;
 }
 .jumpRabbit {
-	// animation: hop 2s linear infinite;
   &:after{
 	  animation: kick 1s infinite linear;
   }
-}
-.jump {
-	// animation: hopjump 2s linear infinite;
-}
-
-
-@keyframes hop {
-	20% {
-		transform: rotate(-10deg);
-	}
-
-	40% {
-		transform: rotate(10deg);
-	}
-
-	60%,
-	75% {
-		transform: rotate(0deg);
-	}
-}
-
-@keyframes hopjump {
-	20% {
-		transform: rotate(-10deg) translateY(-2em);
-	}
-
-	40% {
-		transform: rotate(10deg) translateY(-8em);
-	}
-
-	60%,
-	75% {
-		transform: rotate(0deg) translateY(0);
-	}
 }
 
 @keyframes kick {

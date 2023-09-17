@@ -196,7 +196,7 @@ export default {
     },
     startGame() {
       if (this.state !== "playing") return;
-      // 3s内随机生成障碍物
+      // 3s内随机生成月饼堆
       this.timer = setTimeout(() => {
         if (this.state !== "playing") return;
         this.createObstacle();
@@ -205,12 +205,12 @@ export default {
       }, this.time * 1000);
     },
 
-    // 创建障碍物
+    // 创建月饼堆
     createObstacle() {
       const obstacle = document.createElement("div");
       obstacle.classList.add("obstacle");
 
-      // 设置障碍物的初始位置，这里的Math.random()用于生成随机位置
+      // 设置月饼堆的初始位置，这里的Math.random()用于生成随机位置
       const num = Math.ceil(
         (Math.random() * (this.obstacleContainer.clientHeight - 20) + 20) / 25
       );
@@ -224,22 +224,22 @@ export default {
 
       obstacle.style.right = 0; // 初始位置在容器的右侧
 
-      // 将障碍物添加到容器中
+      // 将月饼堆添加到容器中
       this.obstacleContainer.appendChild(obstacle);
 
-      // 让障碍物向左移动
+      // 让月饼堆向左移动
       this.moveObstacle(obstacle);
     },
     moveObstacle(obstacle) {
-      const obstacleSpeed = 3; // 障碍物移动速度，可以根据需要调整
+      const obstacleSpeed = 3; // 月饼堆移动速度，可以根据需要调整
       const moveInterval = () => {
         if (this.state !== "playing") return;
         const obstacleRight = parseInt(obstacle.style.right);
-        // 移动障碍物
+        // 移动月饼堆
         obstacle.style.right = obstacleRight + obstacleSpeed + "px";
-        // 如果障碍物移出容器，则移除它并创建新的障碍
+        // 如果月饼堆移出容器，则移除它并创建新的月饼堆
         if (obstacleRight > this.obstacleContainer.clientWidth) {
-          obstacle.remove(); // 移除障碍物
+          obstacle.remove(); // 移除月饼堆
         } else {
           window.requestAnimationFrame(moveInterval);
         }
