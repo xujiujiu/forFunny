@@ -45,6 +45,8 @@ export default {
       audioContext: null,
       audioStream: null,
       isLisening: false,
+      jumpDefultCount: 2, // 限制每次只能跳2次
+      jumpCount: 0,
       model: 1, // 0:空格跳跃、1:声音跳跃
     };
   },
@@ -121,6 +123,8 @@ export default {
 
     jump() {
       if (this.state !== "playing") this.start();
+      if (this.jumpCount === this.jumpDefultCount) return
+      this.jumpCount++;
       this.jumping = true;
       clearInterval(this.fallInterval);
       clearInterval(this.jumpInterval);
@@ -142,6 +146,7 @@ export default {
             this.rabbit.style.transform = `rotate(0deg) translateY(0px)`;
           }
           clearInterval(this.fallInterval);
+          this.jumpCount = 0;
           this.jumping = false;
         } else {
           this.rabbit.style.transform = `rotate(10deg) translateY(-${this.jumpHeight}px)`;
