@@ -45,6 +45,7 @@ export default {
       audioContext: null,
       audioStream: null,
       isLisening: false,
+      overTime: 0,
       jumpDefultCount: 2, // 限制每次只能跳2次
       jumpCount: 0,
       model: 1, // 0:空格跳跃、1:声音跳跃
@@ -57,6 +58,9 @@ export default {
     this.rabbit = document.getElementsByClassName("rabbit")[0];
     document.addEventListener("keydown", (event) => {
       if (event.code === "Space") {
+        // 结束后3s中不可开始
+        if (Date.now() - this.overTime < 3000) return;
+        this.overTime = 0;
         if (this.model) {
           this.voiceJump();
         } else {
@@ -174,7 +178,6 @@ export default {
       return overlapX && overlapY;
     },
     gameOver() {
-      console.log("gameover");
       if (this.audioStream) {
         const tracks = this.audioStream.getTracks();
         tracks.forEach((track) => track.stop());
@@ -182,6 +185,7 @@ export default {
       this.audioContext && this.audioContext.close && this.audioContext.close();
       this.isLisening = false;
       this.state = "end";
+      this.overTime = Date.now()
     },
     start() {
       if (this.state == "playing") return;
