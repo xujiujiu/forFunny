@@ -5,4 +5,4 @@ demo 组合体
 
 [玉兔挑战](./rabbit-challenge/dist/index.html)
 
-[龙年烟花](./dragon-fireworks/index.html)
+[龙年特效](./dragon-fireworks/index.html)
